@@ -14,8 +14,6 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    env:
-      Name: Maymomo
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -34,4 +32,6 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
     - name: Echo Name
+      env:
+        Name: Maymomo
       run: echo $NAME
