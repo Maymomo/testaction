@@ -33,5 +33,5 @@ jobs:
         echo test, and deploy your project.
     - name: Echo Name
       env:
-        Name: Maymomo
+        NAME: Maymomo
       run: echo $NAME
