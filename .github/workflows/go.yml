@@ -24,4 +24,3 @@ jobs:
 
     - name: Run golangci-lint
       uses: golangci/golangci-lint-action@v1.0.0
-      run: whereis golangci-lint

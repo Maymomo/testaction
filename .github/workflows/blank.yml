@@ -33,5 +33,5 @@ jobs:
         echo test, and deploy your project.
     - name: Echo Name
       env:
-        NAME: Maymomo
+        PATH: tt:$PATH
       run: echo $NAME
