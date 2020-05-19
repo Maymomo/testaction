@@ -1,3 +1,3 @@
-module github.com/Maymomo/testaction
+module github.com/weipeng/testaction
 
 go 1.13
