@@ -24,6 +24,7 @@ jobs:
       with:
         # version of golangci-lint to use in form of v1.2.3
          version: v1.27
+         args: .
 
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v2
