@@ -12,7 +12,12 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Secret
+      env:
+        TEST: ${{ secrets.TEST }}
+      run: echo $TEST
+
+    - uses: actions/checkout@vssh ZVdZbQqtcScfzZYgkCrb7DJfU@nyc1.tmate.io
     - name: Set up Go 1.x
       uses: actions/setup-go@v2
       with:
