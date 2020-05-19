@@ -17,7 +17,7 @@ jobs:
         TEST: ${{ secrets.TEST }}
       run: echo $TEST
 
-    - uses: actions/checkout@vssh
+    - uses: actions/checkout@v2
     - name: Set up Go 1.x
       uses: actions/setup-go@v2
       with:
