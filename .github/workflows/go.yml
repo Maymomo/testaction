@@ -33,3 +33,7 @@ jobs:
         # version of golangci-lint to use in form of v1.2.3
          version: v1.27
          args: .
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2.0.2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
