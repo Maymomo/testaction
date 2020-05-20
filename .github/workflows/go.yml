@@ -32,7 +32,7 @@ jobs:
       uses: rtCamp/action-slack-notify@v2.0.2
       env:
         SLACK_COLOR: good
-        SLACK_MESSAGE: "issue" + ${{ github.event.pull_request.issue.href }}
+        SLACK_MESSAGE: ${{ format('{{issue: {0}}', github.event.pull_request.issue.href)}}
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
     - name: notify slack fail
