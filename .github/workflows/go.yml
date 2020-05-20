@@ -7,7 +7,6 @@ on:
 
 jobs:
   check:
-    name: prepare
     runs-on: ubuntu-latest
 
     steps:
@@ -40,5 +39,5 @@ jobs:
       if: failure()
       uses: rtCamp/action-slack-notify@v2.0.2
       env:
-        SLACK_COLOR: warning
+        SLACK_COLOR: danger
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
