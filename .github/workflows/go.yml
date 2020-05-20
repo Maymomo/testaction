@@ -6,12 +6,11 @@ on:
     branches: [ master ]
 
 jobs:
-  prepare:
+  Check:
     name: prepare
     runs-on: ubuntu-latest
 
     steps:
-
     - uses: actions/checkout@v2
     - name: Set up Go
       uses: actions/setup-go@v2
@@ -24,8 +23,11 @@ jobs:
       with:
           version: v1.27
 
+    - name: Test
+      run: make test
+
     - name: Build
-      run: exit 1
+      run: make
 
     - name: Notify slack success
       if: success()
@@ -39,5 +41,4 @@ jobs:
       uses: rtCamp/action-slack-notify@v2.0.2
       env:
         SLACK_COLOR: danger
-        SLACK_MESSAGE: ${{ toJson(github) }}
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
