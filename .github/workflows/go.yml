@@ -32,7 +32,6 @@ jobs:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
     - name: Notify slack fail
-      if: failure()
       uses: rtCamp/action-slack-notify@v2.0.2
       env:
         SLACK_COLOR: danger
