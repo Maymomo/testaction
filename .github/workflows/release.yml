@@ -14,5 +14,6 @@ jobs:
           with:
             username: ${{ github.actor }}
             password: ${{ secrets.GITHUB_TOKEN }}
-            repository: docker.pkg.github.com/weipengzhu/testaction/testaction
+            registry: docker.pkg.github.com
+            repository: weipengzhu/testaction/testaction
             tag_with_ref: true
