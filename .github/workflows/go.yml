@@ -17,24 +17,23 @@ jobs:
       with:
         go-version: ^1.14
       id: go
-    - name: Download
-lint:
-  name: lint
-  runs-on: ubuntu-latest
-  - name: Run golangci-lint
-    uses: golangci/golangci-lint-action@v1.0.0
-    with:
-        version: v1.27
-  - name: Notify slack success
-    if: success()
-    uses: rtCamp/action-slack-notify@v2.0.2
-    env:
-      SLACK_COLOR: good
-      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    - name: Run golangci-lint
+      uses: golangci/golangci-lint-action@v1.0.0
+      with:
+          version: v1.27
+    - name: Notify slack success
+      if: success()
+      uses: rtCamp/action-slack-notify@v2.0.2
+      env:
+        SLACK_COLOR: good
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
-  - name: Notify slack fail
-    if: failure()
-    uses: rtCamp/action-slack-notify@v2.0.2
-    env:
-      SLACK_COLOR: danger
-      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+    - name: Notify slack fail
+      if: failure()
+      uses: rtCamp/action-slack-notify@v2.0.2
+      env:
+        SLACK_COLOR: danger
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
