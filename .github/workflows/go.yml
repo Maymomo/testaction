@@ -26,7 +26,6 @@ jobs:
       with:
           version: v1.27
     - name: Notify slack success
-      if: success()
       uses: rtCamp/action-slack-notify@v2.0.2
       env:
         SLACK_COLOR: good
