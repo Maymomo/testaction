@@ -12,7 +12,8 @@ jobs:
         - name: push
           uses: docker/build-push-action@v1
           with:
-            username: ${{ secrets.GITHUB_USERNAME }}
+            name: weipengzhu/testaction/testaction
+            username: ${{ github.actor }}
             password: ${{ secrets.GITHUB_TOKEN }}
-            repository: maymomo/test
+            repository: docker.pkg.github.com
             tag_with_ref: true
