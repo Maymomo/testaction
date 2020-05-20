@@ -2,6 +2,7 @@ name: Release
 
 on:
  release:
+  types: [ published, edit ]
 
 jobs:
     release:
@@ -15,5 +16,5 @@ jobs:
             username: ${{ github.actor }}
             password: ${{ secrets.GITHUB_TOKEN }}
             registry: docker.pkg.github.com
-            repository: weipengzhu/testaction
+            repository: weipengzhu/testaction/testaction
             tag_with_ref: true
