@@ -15,9 +15,10 @@ jobs:
           with:
             username: ${{ github.actor }}
             password: ${{ secrets.GITHUB_TOKEN }}
-            registry: docker.pkg.github.com
+            registry: docker.pkg.ithub.com
             repository: weipengzhu/testaction/testaction
             tag_with_ref: true
+
         - name: notify slack success
           if: success()
           uses: rtCamp/action-slack-notify@v2.0.2
@@ -26,10 +27,10 @@ jobs:
             SLACK_MESSAGE: ${{ github.event.release.html_url }}
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
-        - name: notify slack fail
+        - name: Notify slack fail
           if: failure()
           uses: rtCamp/action-slack-notify@v2.0.2
           env:
             SLACK_COLOR: danger
-            SLACK_MESSAGE: ${{ github.event.pull_request._links.html.href }}
+            SLACK_MESSAGE: ${{ github.event.release.html_url }}
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
