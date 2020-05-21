@@ -1,19 +1,19 @@
 name: Release
 
 on:
- release:
-  types: [ published, edit ]
+  release:
+    types: [published, edited]
 
 jobs:
-    release:
-        name: Release
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v2
-        - name: push
-          uses: docker/build-push-action@v1
-          with:
-            username: ${{ github.actor }}
-            password: ${{ secrets.GITHUB_TOKEN }}
-            repository: docker.pkg.github.com/weipengzhu/testaction/testaction
-            tag_with_ref: true
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: push
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          repository: docker.pkg.github.com/weipengzhu/testaction/testaction
+          tag_with_ref: true

@@ -1,44 +1,45 @@
 name: pull-request
 
 on:
+  push:
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   pr-check:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: ^1.14
-      id: go
+      - uses: actions/checkout@v2
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ^1.14
+        id: go
 
-    - name: Run golangci-lint
-      uses: golangci/golangci-lint-action@v1.0.0
-      with:
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v1.0.0
+        with:
           version: v1.27
 
-    - name: Test
-      run: echo 'no test'
+      - name: Test
+        run: echo 'no test'
 
-    - name: Build
-      run: make
+      - name: Build
+        run: make
 
-    - name: Notify slack success
-      if: success()
-      uses: rtCamp/action-slack-notify@v2.0.2
-      env:
-        SLACK_COLOR: good
-        SLACK_MESSAGE: ${{ github.event.pull_request._links.html.href }}
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      - name: Notify slack success
+        if: success()
+        uses: rtCamp/action-slack-notify@v2.0.2
+        env:
+          SLACK_COLOR: good
+          SLACK_MESSAGE: ${{ github.event.pull_request._links.html.href }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
-    - name: Notify slack fail
-      if: failure()
-      uses: rtCamp/action-slack-notify@v2.0.2
-      env:
-        SLACK_COLOR: danger
-        SLACK_MESSAGE: ${{ github.event.pull_request._links.html.href }}
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      - name: Notify slack fail
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2.0.2
+        env:
+          SLACK_COLOR: danger
+          SLACK_MESSAGE: ${{ github.event.pull_request._links.html.href }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
