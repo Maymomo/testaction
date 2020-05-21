@@ -18,3 +18,18 @@ jobs:
             registry: docker.pkg.github.com
             repository: weipengzhu/testaction/testaction
             tag_with_ref: true
+        - name: notify slack success
+          if: success()
+          uses: rtCamp/action-slack-notify@v2.0.2
+          env:
+            SLACK_COLOR: good
+            SLACK_MESSAGE: ${{ github.event }}
+            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+
+        - name: notify slack fail
+          if: failure()
+          uses: rtCamp/action-slack-notify@v2.0.2
+          env:
+            SLACK_COLOR: danger
+            SLACK_MESSAGE: ${{ github.event.pull_request._links.html.href }}
+            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
