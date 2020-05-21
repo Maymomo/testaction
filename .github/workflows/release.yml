@@ -10,27 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Push To Github Package
+      - name: push
         uses: docker/build-push-action@v1
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
-          repository: weipengzhu/testaction/testaction
+          repository: docker.pkg.github.com/weipengzhu/testaction/testaction
           tag_with_ref: true
-
-      - name: Notify slack success
-        if: success()
-        uses: rtCamp/action-slack-notify@v2.0.2
-        env:
-          SLACK_COLOR: good
-          SLACK_MESSAGE: ${{ format('{0} {1} {2}', 'Mona', 'the', 'Octocat') }}
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-
-      - name: Notify slack fail
-        if: failure()
-        uses: rtCamp/action-slack-notify@v2.0.2
-        env:
-          SLACK_COLOR: danger
-          SLACK_MESSAGE: ${{ github.event.release.html_url }}
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
