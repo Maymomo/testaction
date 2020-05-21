@@ -24,7 +24,7 @@ jobs:
         uses: rtCamp/action-slack-notify@v2.0.2
         env:
           SLACK_COLOR: good
-          SLACK_MESSAGE: format('{0} {1} {2}', 'Mona', 'the', 'Octocat')
+          SLACK_MESSAGE: ${{ format('{0} {1} {2}', 'Mona', 'the', 'Octocat') }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
       - name: Notify slack fail
